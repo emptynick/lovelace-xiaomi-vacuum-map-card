@@ -218,6 +218,22 @@
         },
         "mop_pad_humidity": {
             "label": "Wischblatt"
+        },
+        "tight_mopping": {
+            "label": "Enges wischen",
+            "value": {
+                "true": "Ja",
+                "false": "Nein"
+            }
+        },
+        "cleaning_mode": {
+            "label": "Reinigungsart",
+            "value": {
+                "sweeping": "Saugen",
+                "mopping": "Wischen",
+                "sweeping and mopping": "Saugen und Wischen",
+                "mopping after sweeping": "Wischen nach Saugen"
+            }
         }
     },
     "icon": {
