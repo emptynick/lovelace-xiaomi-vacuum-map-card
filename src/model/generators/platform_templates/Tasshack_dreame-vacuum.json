@@ -151,14 +151,6 @@
     "tiles": {
         "from_attributes": [
             {
-                "tile_id": "water_volume",
-                "attribute": "water_volume",
-                "label": "tile.water_volume.label",
-                "icon": "mdi:water",
-                "card_type": "button",
-                "button_type": "state"
-            },
-            {
                 "tile_id": "mop_pad_humidity",
                 "attribute": "mop_pad_humidity",
                 "label": "tile.mop_pad_humidity.label",
@@ -214,20 +206,6 @@
                 "card_type": "button",
                 "button_type": "state"
             },
-            {
-                "tile_id": "suction_level",
-                "attribute": "suction_level",
-                "label": "tile.suction_level.label",
-                "icon": "mdi:mdi:fan",
-                "translation_keys": [
-                    "quiet",
-                    "standard",
-                    "strong",
-                    "turbo"
-                ],
-                "card_type": "button",
-                "button_type": "state"
-            }, 
             {
                 "tile_id": "tight_mopping",
                 "attribute": "tight_mopping",
@@ -307,6 +285,20 @@
                 "label": "tile.water_volume.label",
                 "icon": "mdi:water",
                 "unique_id_regex": "_water_volume",
+                "card_type": "button",
+                "button_type": "state"
+            },
+            {
+                "tile_id": "suction_level",
+                "label": "tile.suction_level.label",
+                "unique_id_regex": "_suction_level",
+                "icon": "mdi:mdi:fan",
+                "translation_keys": [
+                    "quiet",
+                    "standard",
+                    "strong",
+                    "turbo"
+                ],
                 "card_type": "select",
                 "button_type": ""
             }
