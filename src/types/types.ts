@@ -188,6 +188,7 @@ export interface TileConfig extends ActionableObjectConfig, ConditionalObjectCon
     readonly attribute?: string;
     readonly card_type?: string;
     readonly button_type?: string;
+    readonly entity_type?: string;
     readonly unit?: string;
     readonly multiplier?: number;
     readonly precision?: number;

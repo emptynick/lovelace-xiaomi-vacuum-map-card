@@ -200,7 +200,8 @@
                 "icon": "mdi:set-square",
                 "unit": "unit.meter_squared_shortcut",
                 "card_type": "button",
-                "button_type": "state"
+                "button_type": "state",
+                "entity_type": "sensor"
             },
             {
                 "tile_id": "cleaning_mode",
@@ -301,6 +302,15 @@
                 ],
                 "card_type": "button",
                 "button_type": "state"
+            }
+        ],
+        "from_sensors": [
+            {
+                "tile_id": "water_volume",
+                "label": "tile.water_volume.label",
+                "icon": "mdi:water",
+                "card_type": "button",
+                "unique_id_regex": "_water_volume"
             }
         ]
     },
