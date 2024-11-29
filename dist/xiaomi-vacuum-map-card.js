@@ -883,33 +883,7 @@ var _e,ve,ge;function he(e){return e.substr(0,e.indexOf("."))}null===(_e=window.
                 ${l}
             </div>
         `}getTileLabel(e){var t,i,a;return void 0!==this.config.label?this.config.label:void 0!==e?void 0!==this.config.attribute?Io(this.hass.localize,e,this.hass.entities,this.config.attribute):null!==(i=null===(t=e.attributes)||void 0===t?void 0:t.friendly_name)&&void 0!==i?i:this.config.entity:null!==(a=this.config.tile_id)&&void 0!==a?a:"tile"}getTileValue(e){var t,i;let a="";const n=this.getUnit(),o=void 0!==this.config.multiplier||void 0!==this.config.precision;if(this.config.entity&&e)if(o)a=this.config.attribute?e.attributes[this.config.attribute]:e.state;else{a=Wo(this.hass,this.config,e);const t=e.attributes.unit_of_measurement;""!==n&&t&&a.endsWith(t)&&(a=a.substring(0,a.length-t.length).trimEnd())}else this.config.internal_variable&&this.config.internal_variable in this.internalVariables&&(a=this.internalVariables[this.config.internal_variable]);!o||null===a||"number"!=typeof a&&isNaN(+a)||(a=parseFloat(a.toString())*(null!==(t=this.config.multiplier)&&void 0!==t?t:1),void 0!==this.config.precision&&(a=a.toFixed(this.config.precision)));const r=null!==(i=this.config.translations)&&void 0!==i?i:{};return`${a}`.toLowerCase()in r&&(a=r[`${a}`.toLowerCase()]),`${a}${n}`}getIcon(e){var t;if(this.config.icon_source){const e=this.config.icon_source.split(".attributes."),t=this.hass.states[e[0]];let i=t.state;return 2===e.length&&(i=t.attributes[e[1]]),i}return void 0===this.config.icon&&e?null!==(t=e.attributes.icon)&&void 0!==t?t:null:this.config.icon}getCardType(){var e;return void 0!==this.config.card_type?this.config.card_type:null!==(e=this.config.card_type)&&void 0!==e?e:"button"}getButtonType(){var e;return void 0!==this.config.button_type?this.config.button_type:null!==(e=this.config.button_type)&&void 0!==e?e:"state"}getUnit(){return this.config.unit?"%"===this.config.unit?Ho(this.hass.locale)+"%":` ${this.config.unit}`:""}static get styles(){return r`
-          .tile-wrapper {
-            min-width: fit-content;
-            width: 80px;
-            padding: 10px;
-            border-radius: var(--map-card-internal-small-radius);
-            background-color: var(--map-card-internal-tertiary-color);
-            flex-grow: 1;
-            overflow: hidden;
-            color: var(--map-card-internal-tertiary-text-color);
-          }
-
-          .tile-title {
-            font-size: smaller;
-          }
-
-          .tile-value-wrapper {
-            display: inline-flex;
-            align-items: flex-end;
-            padding-top: 5px;
-          }
-
-          .tile-icon {
-            padding-right: 5px;
-          }
-
-          .tile-value {
-          }
+          
         `}};e([de({attribute:!1})],gc.prototype,"config",void 0),e([de({attribute:!1})],gc.prototype,"hass",void 0),e([de({attribute:!1})],gc.prototype,"isInEditor",void 0),e([de({attribute:!1})],gc.prototype,"helper",void 0),e([de({attribute:!1})],gc.prototype,"onAction",void 0),e([de({attribute:!1})],gc.prototype,"internalVariables",void 0),gc=e([le("xvmc-tile")],gc);let hc=class extends _c{render(){var e,t,i;if(0!==(null!==(t=null===(e=this.tiles)||void 0===e?void 0:e.length)&&void 0!==t?t:0))return D`
                 <div class="tiles-wrapper">
                     ${null===(i=this.tiles)||void 0===i?void 0:i.map((e=>D`
