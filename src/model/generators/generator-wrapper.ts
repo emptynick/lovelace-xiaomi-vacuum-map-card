@@ -1,8 +1,8 @@
-import { IconActionConfig, Language, TileConfig, VariablesStorage } from "../../types/types";
+import { IconActionConfig, Language, VariablesStorage } from "../../types/types";
 import { HomeAssistantFixed } from "../../types/fixes";
 
 export class GeneratorWrapper {
-    public static generate<T extends TileConfig | IconActionConfig>(
+    public static generate<T extends IconActionConfig>(
         hass: HomeAssistantFixed,
         itemsConfigs: T[] | undefined,
         vacuumEntity: string,

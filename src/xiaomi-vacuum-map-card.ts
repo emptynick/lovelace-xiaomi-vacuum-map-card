@@ -12,7 +12,6 @@ import type {
     ReplacedKey,
     RoomConfig,
     RoomConfigEventData,
-    TileConfig,
     XiaomiVacuumMapCardConfig,
 } from "./types/types";
 import {
@@ -69,7 +68,6 @@ import { SelectionType } from "./model/map_mode/selection-type";
 import { RepeatsType } from "./model/map_mode/repeats-type";
 import { GeneratorWrapper } from "./model/generators/generator-wrapper";
 import { PlatformGenerator } from "./model/generators/platform-generator";
-import { sortTiles, TilesGenerator } from "./model/generators/tiles-generator";
 import { IconListGenerator, sortIcons } from "./model/generators/icon-list-generator";
 import { ToastRenderer } from "./renderers/toast-renderer";
 import { CoordinatesConverter } from "./model/map_objects/coordinates-converter";
@@ -81,7 +79,6 @@ import "./polyfills/objectEntries";
 import "./polyfills/objectFromEntries";
 
 import { DropdownMenu } from "./components/dropdown-menu";
-import { TilesWrapper } from "./components/tiles-wrapper";
 import { IconsWrapper } from "./components/icons-wrapper";
 import { PresetSelector } from "./components/preset-selector";
 
@@ -276,7 +273,6 @@ export class XiaomiVacuumMapCard extends LitElement {
         }
         this._updateCalibration(preset);
 
-        const tiles = preset.tiles?.filter(tile => areConditionsMet(tile, this.internalVariables, this.hass));
         const icons = IconsWrapper.preprocessIcons(preset.icons, this.internalVariables, this.hass);
         const modes = this.modes;
 
@@ -368,7 +364,7 @@ export class XiaomiVacuumMapCard extends LitElement {
                 </div>
                 ${conditional(!validCalibration, () => this._showInvalidCalibrationWarning())}
                 ${conditional(
-                    modes.length > 1 || mapControls.length > 0 || (icons?.length??0) !== 0 || (tiles?.length ?? 0) !== 0,
+                    modes.length > 1 || mapControls.length > 0 || (icons?.length??0) !== 0,
                     () => html`
                     <div class="controls-wrapper">
                         ${conditional(
@@ -399,14 +395,6 @@ export class XiaomiVacuumMapCard extends LitElement {
                             .helper=${this.helper}
                             .onAction=${(c: ActionableObjectConfig, action?: string) => createActionWithConfigHandler(this, c, action)}>
                         </xvmc-icons-wrapper>
-                        <xvmc-tiles-wrapper
-                            .hass=${this.hass}
-                            .tiles=${tiles}
-                            .isInEditor=${this.isInEditor}
-                            .onAction=${(c: ActionableObjectConfig, action?: string) => createActionWithConfigHandler(this, c, action)}
-                            .internalVariables=${this.internalVariables}
-                            .helper=${this.helper}>
-                        </xvmc-tiles-wrapper>
                     </div>`
                 )}
                 ${ToastRenderer.render("map-card")}
@@ -539,8 +527,8 @@ export class XiaomiVacuumMapCard extends LitElement {
         this.currentPreset = config;
         this.internalVariables = this._getInternalVariables(config);
 
-        this._getIconsAndTiles(config, this.internalVariables)
-            .then(([icons, tiles]) => this._setPreset({ ...config, tiles: tiles, icons: icons }))
+        this._getIcons(config, this.internalVariables)
+            .then(([icons]) => this._setPreset({ ...config, icons: icons }))
             .then(() => setTimeout(() => this.requestUpdate(), 100))
             .then(() => this._setCurrentMode(0, false));
 
@@ -557,18 +545,15 @@ export class XiaomiVacuumMapCard extends LitElement {
         };
     }
 
-    private _getIconsAndTiles(
+    private _getIcons(
         config: CardPresetConfig,
         internalVariables: VariablesStorage
-    ): Promise<[IconActionConfig[], TileConfig[]]> {
+    ): Promise<[IconActionConfig[]]> {
         const vacuumPlatform = PlatformGenerator.getPlatformName(config.vacuum_platform);
         const iconsPromise = GeneratorWrapper.generate(this.hass, config.icons, config.entity, vacuumPlatform,
             internalVariables, this.config.language, config.append_icons ?? false,
             (t: IconActionConfig) => t.icon_id, sortIcons, IconListGenerator.generate);
-        const tilesPromise = GeneratorWrapper.generate(this.hass, config.tiles, config.entity, vacuumPlatform,
-            internalVariables, this.config.language, config.append_tiles ?? false, (t: TileConfig) => t.tile_id,
-            sortTiles, TilesGenerator.generate);
-        return Promise.all([iconsPromise, tilesPromise]);
+        return Promise.all([iconsPromise]);
     }
 
     private _getModes(config: CardPresetConfig) {
@@ -861,11 +846,10 @@ export class XiaomiVacuumMapCard extends LitElement {
 
     private async _getConfigOfPreset(preset: CardPresetConfig): Promise<CardPresetConfig> {
         const internalVariables = this._getInternalVariables(preset)
-        const [icons, tiles] = await this._getIconsAndTiles(preset, internalVariables);
+        const [icons] = await this._getIcons(preset, internalVariables);
         return {
             ...preset,
             icons: JSON.parse(JSON.stringify(icons)),
-            tiles: JSON.parse(JSON.stringify(tiles)),
             map_modes: this._getModes(preset).map(m => m.toMapModeConfig()),
         };
     }
@@ -1767,7 +1751,6 @@ export class XiaomiVacuumMapCard extends LitElement {
             ${PredefinedPoint.styles}
             ${Room.styles}
             ${IconsWrapper.styles}
-            ${TilesWrapper.styles}
             ${DropdownMenu.styles}
             ${ToastRenderer.styles}
         `;

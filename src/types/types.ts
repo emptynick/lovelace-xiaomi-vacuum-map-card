@@ -8,7 +8,6 @@ import {
 import { ACTION_HANDLER_CUSTOM_ELEMENT_NAME, CARD_CUSTOM_ELEMENT_NAME, EDITOR_CUSTOM_ELEMENT_NAME } from "../const";
 import { XiaomiVacuumMapCardActionHandler } from "../action-handler-directive";
 import { XiaomiVacuumMapCard } from "../xiaomi-vacuum-map-card";
-import { Tile } from "../components/tile";
 
 declare global {
     interface HTMLElementTagNameMap {
@@ -16,7 +15,6 @@ declare global {
         [EDITOR_CUSTOM_ELEMENT_NAME]: LovelaceCardEditor;
         [ACTION_HANDLER_CUSTOM_ELEMENT_NAME]: XiaomiVacuumMapCardActionHandler;
         "hui-error-card": LovelaceCard;
-        "xvmc-tile": Tile;
     }
 }
 
@@ -63,8 +61,6 @@ export interface CardPresetConfig extends ConditionalObjectConfig {
     readonly calibration_source?: CalibrationSourceConfig;
     readonly icons?: IconActionConfig[];
     readonly append_icons?: boolean;
-    readonly tiles?: TileConfig[];
-    readonly append_tiles?: boolean;
     readonly map_modes?: MapModeConfig[];
     readonly activate?: ServiceCallSchemaConfig;
     readonly activate_on_switch?: boolean;
@@ -109,26 +105,9 @@ export interface PlatformTemplate {
         readonly default_templates: string[];
         readonly templates: { [templateName: string]: MapModeConfig };
     };
-    readonly tiles?: {
-        readonly from_attributes?: TileFromAttributeTemplate[];
-        readonly from_sensors?: TileFromSensorTemplate[];
-    };
     readonly icons?: IconTemplate[];
     readonly calibration_points?: CalibrationPoint[];
     readonly internal_variables?: VariablesStorage;
-}
-
-export interface TileTemplate extends TileConfig {
-    readonly translation_keys?: Array<string>;
-}
-
-export interface TileFromAttributeTemplate extends TileTemplate {
-    readonly attribute: string;
-    readonly icon: string;
-}
-
-export interface TileFromSensorTemplate extends TileTemplate {
-    readonly unique_id_regex: string;
 }
 
 export interface IconTemplate extends Omit<IconActionConfig, "icon"> {
@@ -175,25 +154,6 @@ export interface MenuIconActionConfig extends IconActionConfig {
 
 export interface DropdownEntryIconActionConfig extends IconActionConfig {
     readonly isSelected: boolean;
-}
-
-export interface TileConfig extends ActionableObjectConfig, ConditionalObjectConfig {
-    readonly tile_id?: string;
-    readonly label?: string;
-    readonly tooltip?: string;
-    readonly icon?: string;
-    readonly icon_source?: string;
-    readonly internal_variable?: string;
-    readonly entity?: string;
-    readonly attribute?: string;
-    readonly card_type?: string;
-    readonly button_type?: string;
-    readonly unit?: string;
-    readonly multiplier?: number;
-    readonly precision?: number;
-    readonly translations?: Record<string, string>;
-    readonly replace_config?: boolean;
-    readonly order?: number;
 }
 
 export interface ActionableObjectConfig {

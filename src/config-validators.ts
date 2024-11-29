@@ -13,7 +13,6 @@ import {
     PredefinedZoneConfig,
     RoomConfig,
     ServiceCallSchemaConfig,
-    TileConfig,
     TranslatableString,
     XiaomiVacuumMapCardConfig,
 } from "./types/types";
@@ -69,23 +68,6 @@ function validateIconConfig(config: IconActionConfig): TranslatableString[] {
     const errors: TranslatableString[] = [];
     if (!config.icon && config.type !== "menu" && !config.replace_config) {
         errors.push("validation.preset.icons.icon.missing");
-    }
-    return errors;
-}
-
-function validateTileConfig(config: TileConfig): TranslatableString[] {
-    if (!config) {
-        return ["validation.preset.tiles.invalid"];
-    }
-    const errors: TranslatableString[] = [];
-    if (config.replace_config) {
-        return errors;
-    }
-    if (!config.entity && !config.internal_variable) {
-        errors.push("validation.preset.tiles.entity.missing");
-    }
-    if (!config.label && !config.entity) {
-        errors.push("validation.preset.tiles.label.missing");
     }
     return errors;
 }
@@ -259,7 +241,6 @@ function validatePreset(config: CardPresetConfig, nameRequired: boolean, languag
     if (config.vacuum_platform && !PlatformGenerator.getPlatforms().includes(config.vacuum_platform))
         errors.push(["validation.preset.platform.invalid", "{0}", config.vacuum_platform]);
     (config.icons ?? []).flatMap(i => validateIconConfig(i)).forEach(e => errors.push(e));
-    (config.tiles ?? []).flatMap(i => validateTileConfig(i)).forEach(e => errors.push(e));
     (config.map_modes ?? [])
         .flatMap(i => validateMapModeConfig(vacuumPlatform, i, language))
         .forEach(e => errors.push(e));

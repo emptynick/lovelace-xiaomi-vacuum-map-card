@@ -85,19 +85,6 @@ export function getWatchedEntitiesForPreset(config: CardPresetConfig, language: 
         .forEach(e => {
             if (e) watchedEntities.add(e);
         });
-    (config.tiles ?? []).forEach(s => {
-        if (s.entity) watchedEntities.add(s.entity);
-    });
-    (config.tiles ?? []).forEach(s => {
-        if (s.icon_source) watchedEntities.add(s.icon_source.split(".attributes.")[0]);
-    });
-    (config.tiles ?? [])
-        .filter(s => s.conditions)
-        .flatMap(s => s.conditions)
-        .map(c => c?.entity)
-        .forEach(e => {
-            if (e) watchedEntities.add(e);
-        });
     (config.map_modes ?? [])
         .map(m => new MapMode(PlatformGenerator.getPlatformName(config.vacuum_platform), m, language))
         .forEach(m => getWatchedEntitiesForMapMode(m).forEach(e => watchedEntities.add(e)));
