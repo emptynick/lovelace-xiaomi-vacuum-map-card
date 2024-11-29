@@ -121,6 +121,7 @@ export class XiaomiVacuumMapCard extends LitElement {
     @state() private configErrors: string[] = [];
     @state() private connected = false;
     @state() public internalVariables = {};
+    @state() public helper = [];
     @query(".modes-dropdown-menu") private _modesDropdownMenu?: HTMLElement;
     @queryAll(".icon-dropdown-menu") private _iconDropdownMenus?: NodeListOf<HTMLElement>;
     private currentPreset!: CardPresetConfig;
@@ -146,6 +147,10 @@ export class XiaomiVacuumMapCard extends LitElement {
         this._handleRoomsConfigGet = this._handleRoomsConfigGet.bind(this);
         this._handleServiceCallGet = this._handleServiceCallGet.bind(this);
         this._handleLovelaceDomEvent = this._handleLovelaceDomEvent.bind(this);
+    }
+
+    private async loadCardHelpers(): Promise<void> {
+        this.helper = await (window as any).loadCardHelpers();
     }
 
     @property({ attribute: false }) public _hass!: HomeAssistantFixed;
@@ -205,6 +210,7 @@ export class XiaomiVacuumMapCard extends LitElement {
         this.watchedEntities = getWatchedEntities(this.config);
         this._setPresetIndex(0, false, true);
         this.requestUpdate("config");
+        this.loadCardHelpers();
     }
 
     public getCardSize(): number {
@@ -244,6 +250,9 @@ export class XiaomiVacuumMapCard extends LitElement {
     }
 
     protected render(): TemplateResult | void {
+        if (!this.helper) {
+            return html``;
+        }
         if (this.oldConfig) {
             return this._showOldConfig();
         }
@@ -387,6 +396,7 @@ export class XiaomiVacuumMapCard extends LitElement {
                         <xvmc-icons-wrapper
                             .icons=${icons}
                             .isInEditor=${this.isInEditor}
+                            .helper=${this.helper}
                             .onAction=${(c: ActionableObjectConfig, action?: string) => createActionWithConfigHandler(this, c, action)}>
                         </xvmc-icons-wrapper>
                         <xvmc-tiles-wrapper
@@ -394,7 +404,8 @@ export class XiaomiVacuumMapCard extends LitElement {
                             .tiles=${tiles}
                             .isInEditor=${this.isInEditor}
                             .onAction=${(c: ActionableObjectConfig, action?: string) => createActionWithConfigHandler(this, c, action)}
-                            .internalVariables=${this.internalVariables}>
+                            .internalVariables=${this.internalVariables}
+                            .helper=${this.helper}>
                         </xvmc-tiles-wrapper>
                     </div>`
                 )}

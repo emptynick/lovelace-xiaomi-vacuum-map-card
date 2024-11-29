@@ -33,6 +33,9 @@ export class Tile extends RootlessLitElement {
     private isInEditor!: boolean;
 
     @property({attribute: false})
+    private helper: any;
+
+    @property({attribute: false})
     private onAction!: ActionHandlerFunctionCreator;
 
     @property({attribute: false})

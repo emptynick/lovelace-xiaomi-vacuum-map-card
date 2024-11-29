@@ -20,6 +20,9 @@ export class Icon extends RootlessLitElement {
     private isInEditor!: boolean;
 
     @property({attribute: false})
+    private helper: any;
+
+    @property({attribute: false})
     private onAction!: ActionHandlerFunctionCreator;
 
     public render(): TemplateResult {

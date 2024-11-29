@@ -27,6 +27,9 @@ export class TilesWrapper extends RootlessLitElement {
     @property({attribute: false})
     private internalVariables!: VariablesStorage;
 
+    @property({attribute: false})
+    private helper: any;
+
     protected render(): TemplateResult | void {
         if ((this.tiles?.length ?? 0) === 0){
             return;
@@ -39,6 +42,7 @@ export class TilesWrapper extends RootlessLitElement {
                             .config=${tile}
                             .isInEditor=${this.isInEditor}
                             .onAction=${this.onAction}
+                            .helper=${this.helper}
                             .internalVariables=${this.internalVariables}
                         ></xvmc-tile>
                     `)}

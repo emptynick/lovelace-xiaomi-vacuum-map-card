@@ -23,6 +23,9 @@ export class IconsWrapper extends RootlessLitElement {
     private isInEditor!: boolean;
 
     @property({attribute: false})
+    private helper: any;
+
+    @property({attribute: false})
     private onAction!: ActionHandlerFunctionCreator;
 
     public render(): TemplateResult | void {
@@ -37,6 +40,7 @@ export class IconsWrapper extends RootlessLitElement {
                                                 .config=${icon}
                                                 .isInEditor=${this.isInEditor}
                                                 .onAction=${this.onAction}
+                                                .helper=${this.helper}
                                             ></xvmc-icon>
                                         `)}
                 </div>
