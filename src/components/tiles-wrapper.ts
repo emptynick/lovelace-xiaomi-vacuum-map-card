@@ -51,7 +51,12 @@ export class TilesWrapper extends RootlessLitElement {
     public static get styles(): CSSResultGroup {
         return css`
           .tiles-wrapper {
-            
+            display: flex;
+            min-width: 150px;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: stretch;
+            gap: 5px;
           }
 
           ${Tile.styles}

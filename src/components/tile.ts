@@ -164,7 +164,33 @@ export class Tile extends RootlessLitElement {
 
     public static get styles(): CSSResultGroup {
         return css`
-          
+          .tile-wrapper {
+            min-width: fit-content;
+            width: 80px;
+            padding: 10px;
+            border-radius: var(--map-card-internal-small-radius);
+            background-color: var(--map-card-internal-tertiary-color);
+            flex-grow: 1;
+            overflow: hidden;
+            color: var(--map-card-internal-tertiary-text-color);
+          }
+
+          .tile-title {
+            font-size: smaller;
+          }
+
+          .tile-value-wrapper {
+            display: inline-flex;
+            align-items: flex-end;
+            padding-top: 5px;
+          }
+
+          .tile-icon {
+            padding-right: 5px;
+          }
+
+          .tile-value {
+          }
         `;
     }
 }
