@@ -875,7 +875,7 @@ var _e,ve,ge;function he(e){return e.substr(0,e.indexOf("."))}null===(_e=window.
             padding: 0;
             background-color: transparent;
           }
-        `}};e([de({attribute:!1})],vc.prototype,"values",void 0),e([de({attribute:!1})],vc.prototype,"currentIndex",void 0),e([de({attribute:!1})],vc.prototype,"setValue",void 0),e([de({attribute:!1})],vc.prototype,"renderNameCollapsed",void 0),e([de({attribute:!1})],vc.prototype,"additionalClasses",void 0),e([pe(".dropdown-menu")],vc.prototype,"menu",void 0),vc=e([le("xvmc-dropdown-menu")],vc);let gc=class extends _c{render(){var e,t,i;if(!(this.config&&this.hass&&this.onAction&&this.internalVariables))return;this.className="tile-wrapper clickable ripple "+(this.config.tile_id?`tile-${this.config.tile_id}-wrapper`:"");const a=this.config.entity?this.hass.states[this.config.entity]:void 0;if(!a)return;const n=this.getTileLabel(a);this.getTileValue(a);const o=this.getIcon(a),r=this.getButtonType(),s=this.getCardType();a&&function(e){he(e.entity_id)}(a),console.log(this.config.entity);const l=this.helper.createCardElement({type:"custom:bubble-card",icon:o,card_type:s,button_type:r,name:n,entity:this.config.entity});return this.hass&&(l.hass=this.hass),D`
+        `}};e([de({attribute:!1})],vc.prototype,"values",void 0),e([de({attribute:!1})],vc.prototype,"currentIndex",void 0),e([de({attribute:!1})],vc.prototype,"setValue",void 0),e([de({attribute:!1})],vc.prototype,"renderNameCollapsed",void 0),e([de({attribute:!1})],vc.prototype,"additionalClasses",void 0),e([pe(".dropdown-menu")],vc.prototype,"menu",void 0),vc=e([le("xvmc-dropdown-menu")],vc);let gc=class extends _c{render(){var e,t,i;if(!(this.config&&this.hass&&this.onAction&&this.internalVariables))return;this.className="tile-wrapper clickable ripple "+(this.config.tile_id?`tile-${this.config.tile_id}-wrapper`:"");const a=this.config.entity?this.hass.states[this.config.entity]:void 0;if(!a)return;const n=this.getTileLabel(a);this.getTileValue(a);const o=this.getIcon(a),r=this.getButtonType(),s=this.getCardType();a&&function(e){he(e.entity_id)}(a);const l=this.helper.createCardElement({type:"custom:bubble-card",icon:o,card_type:s,button_type:r,name:n,entity:this.config.entity});return this.hass&&(l.hass=this.hass),D`
             <div
                 .title="${this.isInEditor?`tile_id: ${this.config.tile_id}`:null!==(e=this.config.tooltip)&&void 0!==e?e:""}"
                 @action="${this.onAction(this.config)}"
@@ -924,11 +924,7 @@ var _e,ve,ge;function he(e){return e.substr(0,e.indexOf("."))}null===(_e=window.
                     `))}
         `}static get styles(){return r`
           .tiles-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-items: stretch;
-            gap: 5px;
+            
           }
 
           ${gc.styles}

@@ -54,7 +54,7 @@ export class Tile extends RootlessLitElement {
         const button_type = this.getButtonType();
         const card_type = this.getCardType();
         const domain = stateObj ? computeStateDomain(stateObj) : undefined;
-        console.log(this.config.entity);
+
         const element = this.helper.createCardElement({
             type: 'custom:bubble-card',
             icon,
