@@ -198,9 +198,7 @@
                 "attribute": "total_cleaned_area",
                 "label": "tile.total_cleaned_area.label",
                 "icon": "mdi:set-square",
-                "unit": "unit.meter_squared_shortcut",
-                "card_type": "button",
-                "button_type": "state"
+                "unit": "unit.meter_squared_shortcut"
             },
             {
                 "tile_id": "cleaning_mode",
@@ -308,8 +306,9 @@
                 "tile_id": "water_volume",
                 "label": "tile.water_volume.label",
                 "icon": "mdi:water",
-                "card_type": "button",
-                "unique_id_regex": "_water_volume"
+                "unique_id_regex": "_water_volume",
+                "card_type": "select",
+                "button_type": ""
             }
         ]
     },
