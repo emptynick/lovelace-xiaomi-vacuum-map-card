@@ -55,6 +55,18 @@ export class Tile extends RootlessLitElement {
         const card_type = this.getCardType();
         const domain = stateObj ? computeStateDomain(stateObj) : undefined;
 
+        const element = this.helper.createCardElement({
+            type: 'custom:bubble-card',
+            icon,
+            card_type,
+            button_type,
+            entity: stateObj
+        });
+
+        if (this.hass) {
+            element.hass = this.hass;
+        }
+
         return html`
             <div
                 .title="${this.isInEditor ? `tile_id: ${this.config.tile_id}` : this.config.tooltip ?? ""}"
@@ -63,22 +75,7 @@ export class Tile extends RootlessLitElement {
                     hasHold: hasAction(this.config?.hold_action),
                     hasDoubleClick: hasAction(this.config?.double_tap_action),
                 })}">
-                <div class="tile-title">${title}</div>
-                <div class="tile-value-wrapper">
-                    ${conditional(
-                        icon !== "",
-                        () => html`
-                            <div class="tile-icon">
-                                <ha-state-icon
-                                    .icon=${icon}
-                                    .state=${stateObj}
-                                    data-domain=${ifDefined(domain)}
-                                    data-state=${stateObj?.state}>
-                                </ha-state-icon>
-                            </div>`,
-                    )}
-                    <div class="tile-value">${value} => ${button_type} => ${card_type}</div>
-                </div>
+                ${element}
             </div>
         `;
     }

@@ -875,24 +875,12 @@ var _e,ve,ge;function he(e){return e.substr(0,e.indexOf("."))}null===(_e=window.
             padding: 0;
             background-color: transparent;
           }
-        `}};e([de({attribute:!1})],vc.prototype,"values",void 0),e([de({attribute:!1})],vc.prototype,"currentIndex",void 0),e([de({attribute:!1})],vc.prototype,"setValue",void 0),e([de({attribute:!1})],vc.prototype,"renderNameCollapsed",void 0),e([de({attribute:!1})],vc.prototype,"additionalClasses",void 0),e([pe(".dropdown-menu")],vc.prototype,"menu",void 0),vc=e([le("xvmc-dropdown-menu")],vc);let gc=class extends _c{render(){var e,t,i;if(!(this.config&&this.hass&&this.onAction&&this.internalVariables))return;this.className="tile-wrapper clickable ripple "+(this.config.tile_id?`tile-${this.config.tile_id}-wrapper`:"");const a=this.config.entity?this.hass.states[this.config.entity]:void 0;if(!a)return;const n=this.getTileLabel(a),o=this.getTileValue(a),r=this.getIcon(a),s=this.getButtonType(),l=this.getCardType(),c=a?function(e){return he(e.entity_id)}(a):void 0;return D`
+        `}};e([de({attribute:!1})],vc.prototype,"values",void 0),e([de({attribute:!1})],vc.prototype,"currentIndex",void 0),e([de({attribute:!1})],vc.prototype,"setValue",void 0),e([de({attribute:!1})],vc.prototype,"renderNameCollapsed",void 0),e([de({attribute:!1})],vc.prototype,"additionalClasses",void 0),e([pe(".dropdown-menu")],vc.prototype,"menu",void 0),vc=e([le("xvmc-dropdown-menu")],vc);let gc=class extends _c{render(){var e,t,i;if(!(this.config&&this.hass&&this.onAction&&this.internalVariables))return;this.className="tile-wrapper clickable ripple "+(this.config.tile_id?`tile-${this.config.tile_id}-wrapper`:"");const a=this.config.entity?this.hass.states[this.config.entity]:void 0;if(!a)return;this.getTileLabel(a),this.getTileValue(a);const n=this.getIcon(a),o=this.getButtonType(),r=this.getCardType();a&&function(e){he(e.entity_id)}(a);const s=this.helper.createCardElement({type:"custom:bubble-card",icon:n,card_type:r,button_type:o,entity:a});return this.hass&&(s.hass=this.hass),D`
             <div
                 .title="${this.isInEditor?`tile_id: ${this.config.tile_id}`:null!==(e=this.config.tooltip)&&void 0!==e?e:""}"
                 @action="${this.onAction(this.config)}"
                 .actionHandler="${vl({hasHold:xe(null===(t=this.config)||void 0===t?void 0:t.hold_action),hasDoubleClick:xe(null===(i=this.config)||void 0===i?void 0:i.double_tap_action)})}">
-                <div class="tile-title">${n}</div>
-                <div class="tile-value-wrapper">
-                    ${Ws(""!==r,(()=>D`
-                            <div class="tile-icon">
-                                <ha-state-icon
-                                    .icon=${r}
-                                    .state=${a}
-                                    data-domain=${(e=>null!=e?e:U)(c)}
-                                    data-state=${null==a?void 0:a.state}>
-                                </ha-state-icon>
-                            </div>`))}
-                    <div class="tile-value">${o} => ${s} => ${l}</div>
-                </div>
+                ${s}
             </div>
         `}getTileLabel(e){var t,i,a;return void 0!==this.config.label?this.config.label:void 0!==e?void 0!==this.config.attribute?Io(this.hass.localize,e,this.hass.entities,this.config.attribute):null!==(i=null===(t=e.attributes)||void 0===t?void 0:t.friendly_name)&&void 0!==i?i:this.config.entity:null!==(a=this.config.tile_id)&&void 0!==a?a:"tile"}getTileValue(e){var t,i;let a="";const n=this.getUnit(),o=void 0!==this.config.multiplier||void 0!==this.config.precision;if(this.config.entity&&e)if(o)a=this.config.attribute?e.attributes[this.config.attribute]:e.state;else{a=Wo(this.hass,this.config,e);const t=e.attributes.unit_of_measurement;""!==n&&t&&a.endsWith(t)&&(a=a.substring(0,a.length-t.length).trimEnd())}else this.config.internal_variable&&this.config.internal_variable in this.internalVariables&&(a=this.internalVariables[this.config.internal_variable]);!o||null===a||"number"!=typeof a&&isNaN(+a)||(a=parseFloat(a.toString())*(null!==(t=this.config.multiplier)&&void 0!==t?t:1),void 0!==this.config.precision&&(a=a.toFixed(this.config.precision)));const r=null!==(i=this.config.translations)&&void 0!==i?i:{};return`${a}`.toLowerCase()in r&&(a=r[`${a}`.toLowerCase()]),`${a}${n}`}getIcon(e){var t;if(this.config.icon_source){const e=this.config.icon_source.split(".attributes."),t=this.hass.states[e[0]];let i=t.state;return 2===e.length&&(i=t.attributes[e[1]]),i}return void 0===this.config.icon&&e?null!==(t=e.attributes.icon)&&void 0!==t?t:null:this.config.icon}getCardType(){var e;return void 0!==this.config.card_type?this.config.card_type:null!==(e=this.config.card_type)&&void 0!==e?e:"button"}getButtonType(){var e;return void 0!==this.config.button_type?this.config.button_type:null!==(e=this.config.button_type)&&void 0!==e?e:"state"}getUnit(){return this.config.unit?"%"===this.config.unit?Ho(this.hass.locale)+"%":` ${this.config.unit}`:""}static get styles(){return r`
           .tile-wrapper {
