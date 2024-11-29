@@ -59,6 +59,7 @@ export class Tile extends RootlessLitElement {
             icon,
             card_type,
             button_type,
+            name: title,
             entity: this.config.entity
         });
 
