@@ -41,7 +41,6 @@ export class TilesWrapper extends RootlessLitElement {
                             .hass=${this.hass}
                             .config=${tile}
                             .isInEditor=${this.isInEditor}
-                            .onAction=${this.onAction}
                             .helper=${this.helper}
                             .internalVariables=${this.internalVariables}
                         ></xvmc-tile>

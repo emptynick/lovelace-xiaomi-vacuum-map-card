@@ -890,7 +890,6 @@ var _e,ve,ge;function he(e){return e.substr(0,e.indexOf("."))}null===(_e=window.
                             .hass=${this.hass}
                             .config=${e}
                             .isInEditor=${this.isInEditor}
-                            .onAction=${this.onAction}
                             .helper=${this.helper}
                             .internalVariables=${this.internalVariables}
                         ></xvmc-tile>
