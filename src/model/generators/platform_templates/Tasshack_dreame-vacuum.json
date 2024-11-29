@@ -207,18 +207,6 @@
                 "button_type": "state"
             },
             {
-                "tile_id": "tight_mopping",
-                "attribute": "tight_mopping",
-                "label": "tile.tight_mopping.label",
-                "icon": "mdi:heating-coil",
-                "translation_keys": [
-                    "true",
-                    "false"
-                ],
-                "card_type": "button",
-                "button_type": "state"
-            }, 
-            {
                 "tile_id": "wetness_level",
                 "attribute": "wetness_level",
                 "label": "tile.wetness_level.label",
@@ -301,6 +289,18 @@
                 ],
                 "card_type": "select",
                 "button_type": ""
+            },
+            {
+                "tile_id": "tight_mopping",
+                "unique_id_regex": "_tight_mopping",
+                "label": "tile.tight_mopping.label",
+                "icon": "mdi:heating-coil",
+                "translation_keys": [
+                    "true",
+                    "false"
+                ],
+                "card_type": "button",
+                "button_type": "switch"
             }
         ]
     },
