@@ -169,6 +169,15 @@
                 "strong": "Stark"
             }
         },
+        "suction_level": {
+            "label": "Saugkraft",
+            "value": {
+                "quiet": "Leise",
+                "standard": "Standard",
+                "strong": "Stark",
+                "turbo": "Turbo"
+            }
+        },
         "sensor_dirty_left": {
             "label": "Sensoren verbleibend"
         },

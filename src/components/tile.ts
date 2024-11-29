@@ -157,7 +157,7 @@ export class Tile extends RootlessLitElement {
         if (this.config.button_type !== undefined)
             return this.config.button_type;
 
-        return this.config.button_type ?? "button";
+        return this.config.button_type ?? "state";
     }
 
     private getUnit() {
