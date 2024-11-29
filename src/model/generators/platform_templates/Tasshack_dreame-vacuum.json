@@ -200,8 +200,7 @@
                 "icon": "mdi:set-square",
                 "unit": "unit.meter_squared_shortcut",
                 "card_type": "button",
-                "button_type": "state",
-                "entity_type": "sensor"
+                "button_type": "state"
             },
             {
                 "tile_id": "cleaning_mode",
