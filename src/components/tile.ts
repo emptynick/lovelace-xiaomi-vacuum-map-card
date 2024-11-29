@@ -60,7 +60,7 @@ export class Tile extends RootlessLitElement {
             icon,
             card_type,
             button_type,
-            entity: stateObj
+            entity: this.config.entity
         });
 
         if (this.hass) {
