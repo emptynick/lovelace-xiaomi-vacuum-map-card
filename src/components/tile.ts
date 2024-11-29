@@ -71,11 +71,7 @@ export class Tile extends RootlessLitElement {
         return html`
             <div
                 .title="${this.isInEditor ? `tile_id: ${this.config.tile_id}` : this.config.tooltip ?? ""}"
-                @action="${this.onAction(this.config)}"
-                .actionHandler="${actionHandler({
-                    hasHold: hasAction(this.config?.hold_action),
-                    hasDoubleClick: hasAction(this.config?.double_tap_action),
-                })}">
+                >
                 ${element}
             </div>
         `;
