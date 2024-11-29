@@ -51,6 +51,8 @@ export class Tile extends RootlessLitElement {
         const title = this.getTileLabel(stateObj);
         const value = this.getTileValue(stateObj);
         const icon = this.getIcon(stateObj);
+        const button_type = this.getButtonType();
+        const card_type = this.getCardType();
         const domain = stateObj ? computeStateDomain(stateObj) : undefined;
 
         return html`
@@ -75,7 +77,7 @@ export class Tile extends RootlessLitElement {
                                 </ha-state-icon>
                             </div>`,
                     )}
-                    <div class="tile-value">${value}</div>
+                    <div class="tile-value">${value} => ${button_type} => ${card_type}</div>
                 </div>
             </div>
         `;
@@ -142,6 +144,20 @@ export class Tile extends RootlessLitElement {
             return stateObject.attributes.icon ?? null;
         }
         return this.config.icon;
+    }
+
+    private getCardType() {
+        if (this.config.card_type !== undefined)
+            return this.config.card_type;
+
+        return this.config.card_type ?? "button";
+    }
+
+    private getButtonType() {
+        if (this.config.button_type !== undefined)
+            return this.config.button_type;
+
+        return this.config.button_type ?? "button";
     }
 
     private getUnit() {

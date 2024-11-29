@@ -154,41 +154,53 @@
                 "tile_id": "water_volume",
                 "attribute": "water_volume",
                 "label": "tile.water_volume.label",
-                "icon": "mdi:water"
+                "icon": "mdi:water",
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "mop_pad_humidity",
                 "attribute": "mop_pad_humidity",
                 "label": "tile.mop_pad_humidity.label",
-                "icon": "mdi:water-percent"
+                "icon": "mdi:water-percent",
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "cleaned_area",
                 "attribute": "cleaned_area",
                 "label": "tile.cleaned_area.label",
                 "icon": "mdi:ruler-square",
-                "unit": "unit.meter_squared_shortcut"
+                "unit": "unit.meter_squared_shortcut",
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "cleaning_time",
                 "attribute": "cleaning_time",
                 "label": "tile.cleaning_time.label",
                 "icon": "mdi:timer-sand",
-                "unit": "unit.minute_shortcut"
+                "unit": "unit.minute_shortcut",
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "cleaning_count",
                 "attribute": "cleaning_count",
                 "label": "tile.cleaning_count.label",
                 "icon": "mdi:counter",
-                "unit": "x"
+                "unit": "x",
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "total_cleaned_area",
                 "attribute": "total_cleaned_area",
                 "label": "tile.total_cleaned_area.label",
                 "icon": "mdi:set-square",
-                "unit": "unit.meter_squared_shortcut"
+                "unit": "unit.meter_squared_shortcut",
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "cleaning_mode",
@@ -200,7 +212,9 @@
                     "mopping",
                     "sweeping and mopping",
                     "mopping after sweeping"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "suction_level",
@@ -212,7 +226,9 @@
                     "standard",
                     "strong",
                     "turbo"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             }, 
             {
                 "tile_id": "tight_mopping",
@@ -222,13 +238,17 @@
                 "translation_keys": [
                     "true",
                     "false"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             }, 
             {
                 "tile_id": "wetness_level",
                 "attribute": "wetness_level",
                 "label": "tile.wetness_level.label",
-                "icon": "mdi:water-opacity"
+                "icon": "mdi:water-opacity",
+                "card_type": "button",
+                "button_type": "state"
             }, 
             {
                 "tile_id": "mop_wash_level",
@@ -239,7 +259,9 @@
                     "deep",
                     "daily",
                     "water saving"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             }, 
             {
                 "tile_id": "auto_empty_mode",
@@ -251,7 +273,9 @@
                     "standard",
                     "high frequency",
                     "low frequency"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             }, 
             {
                 "tile_id": "cleaning_route",
@@ -261,7 +285,9 @@
                 "translation_keys": [
                     "quick",
                     "standard"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             },
             {
                 "tile_id": "cleangenius",
@@ -272,7 +298,9 @@
                     "off",
                     "routine cleaning",
                     "deep cleaning"
-                ]
+                ],
+                "card_type": "button",
+                "button_type": "state"
             }
         ]
     },
@@ -296,7 +324,9 @@
                     "option": "[[value]]",
                     "entity_id": "[[entity_id]]"
                 }
-            }
+            },
+            "card_type": "button",
+            "button_type": "state"
         },
         {
             "type": "menu",
@@ -317,7 +347,9 @@
                     "option": "[[value]]",
                     "entity_id": "[[entity_id]]"
                 }
-            }
+            },
+            "card_type": "button",
+            "button_type": "state"
         },
         {
             "type": "menu",
@@ -339,7 +371,9 @@
                     "option": "[[value]]",
                     "entity_id": "[[entity_id]]"
                 }
-            }
+            },
+            "card_type": "button",
+            "button_type": "state"
         },
         {
             "type": "menu",
@@ -359,7 +393,9 @@
                     "option": "[[value]]",
                     "entity_id": "[[entity_id]]"
                 }
-            }
+            },
+            "card_type": "button",
+            "button_type": "state"
         }
     ]
 }
